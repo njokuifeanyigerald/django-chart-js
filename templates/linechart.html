@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block heading %} Pie Chart {% endblock %}
+{% block heading %} Line Chart {% endblock %}
 {% block body %}
 <canvas id="myChart" width="300" height="150"></canvas>
 
@@ -11,19 +11,22 @@
     $(document).ready(function(){
         var ctx = document.getElementById('myChart').getContext('2d');
         var myChart = new Chart(ctx, {
-            type: 'line',
+            type: 'pie',
             data: {
-                labels: [{% for item in qs %}'{{item.name}}',{% endfor %}],
+                labels: [{% for poll in polls %}'{{poll.optionOne}}','{{poll.optionTwo}}','{{poll.optionThree}}',{% endfor %}],
                 datasets: [{
-                    label: '# of money',
-                    data: [{% for item in qs %}{{item.money}},{% endfor %}],
+                    label: '# of votes',
+                    data: [{% for poll in polls %}{{poll.optionOneCount}},{{poll.optionTwoCount}},{{poll.optionThreeCount}},{% endfor %}],
                     backgroundColor: [
                         'red',
                         'green',
                         'black',
-                        'blue',
-                        'white',
-                        'skyblue'
+                        'red',
+                        'green',
+                        'black',
+                        'red',
+                        'green',
+                        'black',
                     ],
                     borderColor: [
                         'rgba(255, 99, 132, 1)',

@@ -1,4 +1,6 @@
 /chart/__pycache__
+/poll/__pycache__
+/poll/migrations
 /chart/migrations
 /chart_js/__pycache__
 /db.sqlite3
